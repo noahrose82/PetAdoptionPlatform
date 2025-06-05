@@ -1,4 +1,4 @@
-package com.petadopt.petadoption.controller;
+/*package com.petadopt.petadoption.controller;
 
 import com.petadopt.petadoption.model.Pet;
 import com.petadopt.petadoption.service.PetService;
@@ -47,4 +47,4 @@ public class PetController {
         petService.deletePet(id);
         return "redirect:/pets";
     }
-}
+}*/

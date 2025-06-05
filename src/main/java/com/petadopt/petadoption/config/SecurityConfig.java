@@ -1,4 +1,4 @@
-package com.petadopt.petadoption.config;
+/*package com.petadopt.petadoption.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,3 +39,4 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager();
     }
 }
+*/

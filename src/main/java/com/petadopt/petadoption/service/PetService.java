@@ -1,4 +1,4 @@
-package com.petadopt.petadoption.service;
+/*package com.petadopt.petadoption.service;
 
 import com.petadopt.petadoption.model.Pet;
 import com.petadopt.petadoption.repository.PetRepository;
@@ -37,4 +37,4 @@ public class PetService {
     public List<Pet> filterByStatus(String status) {
         return petRepository.findByAdoptionStatus(status);
     }
-}
+}*/

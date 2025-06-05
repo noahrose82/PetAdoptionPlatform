@@ -1,4 +1,4 @@
-package com.petadopt.petadoption.service;
+/*package com.petadopt.petadoption.service;
 
 import com.petadopt.petadoption.model.User;
 import com.petadopt.petadoption.repository.UserRepository;
@@ -20,4 +20,4 @@ public class UserService {
         user.setRole("USER");
         userRepository.save(user);
     }
-}
+}*/

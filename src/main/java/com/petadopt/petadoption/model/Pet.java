@@ -1,6 +1,6 @@
 package com.petadopt.petadoption.model;
 
-import jakarta.persistence.*;
+/*import jakarta.persistence.*;*/
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+/*@Entity*/
 public class Pet {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+/*    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
     private Long id;
 
     private String name;
@@ -21,7 +21,7 @@ public class Pet {
     private String size;
     private String gender;
 
-    @Column(length = 1000)
+/*    @Column(length = 1000)*/
     private String description;
 
     private String photoUrl; // Optional URL to an image

@@ -18,6 +18,9 @@
 			            <label class="form-label">Password</label>
 			            <input type="password" name="password" class="form-control" th:field="*{password}" required>
 			        </div>
+			        <div th:if="${loginFailed}" class="alert alert-danger">
+						<h5 style="color:red">Invalid username or password. Please try again</h5>
+					</div>
 			        <div class="mb-3">
 			            <button type="submit" class="btn btn-primary w-100">Login</button>
 			        </div>

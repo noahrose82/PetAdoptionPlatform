@@ -9,7 +9,7 @@
 	    <div layout:fragment="content">
 			<div class="container mt-4" style="max-width: 500px;">
 			    <h2 class="mb-3">New User</h2>
-			    <form action="#" th:action="@{doRegister}" th:object="${user}" method="post">
+			    <form action="#" th:action="@{doRegister}" th:object="${register}" method="post">
 			        <div class="mb-3">
 			            <label class="form-label">First Name</label>
 			            <input type="text" th:field="*{firstName}" class="form-control" required>
@@ -21,10 +21,12 @@
 			        <div class="mb-3">
 			            <label class="form-label">username</label>
 			            <input type="text" th:field="*{username}" class="form-control" required>
+			        	<td><h5 style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username</h5></td>
 			        </div>
 			        <div class="mb-3">
 			            <label class="form-label">Password</label>
 			            <input type="password" th:field="*{password}" class="form-control" required>
+			        	<td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password</h5></td>
 			        </div>
 			        <div class="mb-3">
 			            <label class="form-label">Email</label>

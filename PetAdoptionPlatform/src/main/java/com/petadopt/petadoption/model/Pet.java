@@ -1,5 +1,7 @@
 package com.petadopt.petadoption.model;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 /*import jakarta.persistence.*;*/
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,38 +13,33 @@ import lombok.NoArgsConstructor;
 /*@Entity*/
 public class Pet {
 
-/*    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
-    private int id;
-
+	@NotNull(message="Name is a required field")
+    @Size(min=3, max=20, message="Name must be between 3 and 20 characters")
     private String name;
     private int age;
     private String breed;
     private String size;
-    private String gender;
+    
+    @NotNull(message="Sex is a required field")
+    @Size(min=1, max=10, message="Sex must be between 1 and 10 characters")
+    private String sex;
 
 /*    @Column(length = 1000)*/
     private String description;
+    
+    @NotNull(message="Adoption Status is a required field")
+    @Size(min=1, message="Adoption Status must have at least 1 character")
     private String adoptionStatus; // Available, Pending, Adopted
     
-	public Pet(int i, String name, int age, String breed, String size, String gender, String description,
+	public Pet(String name, int age, String breed, String size, String sex, String description,
 			String adoptionStatus) {
-		this.id = i;
 		this.name = name;
 		this.age = age;
 		this.breed = breed;
 		this.size = size;
-		this.gender = gender;
+		this.sex = sex;
 		this.description = description;
 		this.adoptionStatus = adoptionStatus;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -77,12 +74,12 @@ public class Pet {
 		this.size = size;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setSex(String gender) {
+		this.sex = gender;
 	}
 
 	public String getDescription() {

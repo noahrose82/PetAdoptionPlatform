@@ -1,10 +1,14 @@
-/*package com.petadopt.petadoption.controller;
+package com.petadopt.petadoption.controller;
 
 import com.petadopt.petadoption.model.Pet;
 import com.petadopt.petadoption.service.PetService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,35 +20,20 @@ public class PetController {
     @Autowired
     private PetService petService;
 
-    @GetMapping
-    public String listPets(Model model) {
-        List<Pet> pets = petService.getAllPets();
-        model.addAttribute("pets", pets);
-        return "pets/list"; // thymeleaf page
+	@GetMapping("/new")
+	public String displayNewPetForm(Model model) {
+        model.addAttribute("pet", new Pet(null, 0, null, null, null, null, null));
+        return "pet/create";
     }
-
-    @GetMapping("/{id}")
-    public String petDetails(@PathVariable Long id, Model model) {
-        Pet pet = petService.getPetById(id).orElse(null);
-        model.addAttribute("pet", pet);
-        return "pets/detail";
+    
+    @PostMapping("/doNew")
+    public String addPet(@Valid Pet pet, BindingResult bindingResult, Model model) {
+        
+        if (bindingResult.hasErrors()) {
+            return "pet/create";
+        }
+        
+        petService.addPet(pet);
+        return "redirect:/pet/new";
     }
-
-    @GetMapping("/create")
-    public String createPetForm(Model model) {
-        model.addAttribute("pet", new Pet());
-        return "pets/create";
-    }
-
-    @PostMapping
-    public String savePet(@ModelAttribute Pet pet) {
-        petService.savePet(pet);
-        return "redirect:/pets";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deletePet(@PathVariable Long id) {
-        petService.deletePet(id);
-        return "redirect:/pets";
-    }
-}*/
+}

@@ -1,23 +1,16 @@
-/*package com.petadopt.petadoption.service;
+package com.petadopt.petadoption.service;
 
+import com.petadopt.petadoption.model.Register;
 import com.petadopt.petadoption.model.User;
-import com.petadopt.petadoption.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    public void registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole("USER");
-        userRepository.save(user);
-    }
-}*/
+	public void register(Register register) {
+		
+		System.out.print("Username: " + register.getUsername() + "\nPassword: " + register.getPassword() + "\n");
+	}
+}

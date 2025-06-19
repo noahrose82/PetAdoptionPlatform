@@ -1,18 +1,18 @@
-package com.petadopt.petadoption.data;
+package com.petadopt.petadoption.data; // Package declaration
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayList; // Import required class
+import java.util.List; // Import required class
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired; // Import required class
+import org.springframework.stereotype.Service; // Import required class
 
-import com.petadopt.petadoption.data.entity.PetEntity;
-import com.petadopt.petadoption.data.repository.PetRepository;
+import com.petadopt.petadoption.data.entity.PetEntity; // Import required class
+import com.petadopt.petadoption.data.repository.PetRepository; // Import required class
 
-@Service
-public class PetDataService implements DataAccessInterface {
+@Service // Annotation
+public class PetDataService implements DataAccessInterface { // Class declaration
 
-	@Autowired
+	@Autowired // Annotation
 	private PetRepository petRepo;
 	
 	public PetDataService(PetRepository petRepo) {
@@ -42,19 +42,19 @@ public class PetDataService implements DataAccessInterface {
 		return null;
 	}
 
-	@Override
+	@Override // Annotation
 	public boolean create(Object t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	@Override // Annotation
 	public boolean update(Object t, int id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	@Override // Annotation
 	public boolean delete(int id) {
 		// TODO Auto-generated method stub
 		return false;

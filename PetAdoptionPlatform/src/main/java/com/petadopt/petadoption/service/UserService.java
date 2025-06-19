@@ -1,18 +1,18 @@
-package com.petadopt.petadoption.service;
+package com.petadopt.petadoption.service; // Package declaration
 
-import com.petadopt.petadoption.data.UserDataService;
-import com.petadopt.petadoption.data.entity.UserEntity;
-import com.petadopt.petadoption.model.User;
+import com.petadopt.petadoption.data.UserDataService; // Import required class
+import com.petadopt.petadoption.data.entity.UserEntity; // Import required class
+import com.petadopt.petadoption.model.User; // Import required class
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.beans.factory.annotation.Autowired; // Import required class
+import org.springframework.stereotype.Service; // Import required class
+import org.springframework.ui.Model; // Import required class
+import org.springframework.validation.BindingResult; // Import required class
 
-@Service
-public class UserService {
+@Service // Annotation
+public class UserService { // Class declaration
 	
-	@Autowired
+	@Autowired // Annotation
 	private UserDataService service;
 
 	public UserEntity register(User user) {

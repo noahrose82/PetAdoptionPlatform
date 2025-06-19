@@ -1,21 +1,21 @@
-package com.petadopt.petadoption.service;
+package com.petadopt.petadoption.service; // Package declaration
 
-import com.petadopt.petadoption.data.PetDataService;
-import com.petadopt.petadoption.data.entity.PetEntity;
-import com.petadopt.petadoption.data.repository.PetRepository;
-import com.petadopt.petadoption.model.Pet;
+import com.petadopt.petadoption.data.PetDataService; // Import required class
+import com.petadopt.petadoption.data.entity.PetEntity; // Import required class
+import com.petadopt.petadoption.data.repository.PetRepository; // Import required class
+import com.petadopt.petadoption.model.Pet; // Import required class
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired; // Import required class
+import org.springframework.stereotype.Service; // Import required class
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.ArrayList; // Import required class
+import java.util.List; // Import required class
+import java.util.Optional; // Import required class
 
-@Service
-public class PetService {
+@Service // Annotation
+public class PetService { // Class declaration
 	
-	@Autowired
+	@Autowired // Annotation
 	private PetDataService service;
 
 	public List<Pet> getPets() {
@@ -30,7 +30,7 @@ public class PetService {
 		return petsDomain;
 	}
 
-	public void addPet(Pet pet) {
+	public void addPet(Pet pet) { // Method definition
         System.out.println(
             "Name: " + pet.getName() + 
         	"\nAge: " + pet.getAge() + 

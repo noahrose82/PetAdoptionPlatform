@@ -1,39 +1,39 @@
-package com.petadopt.petadoption.data.entity;
+package com.petadopt.petadoption.data.entity; // Package declaration
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.annotation.Id; // Import required class
+import org.springframework.data.relational.core.mapping.Column; // Import required class
+import org.springframework.data.relational.core.mapping.Table; // Import required class
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor; // Import required class
+import lombok.NoArgsConstructor; // Import required class
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Table("pets")
-public class PetEntity {
+@NoArgsConstructor // Annotation
+@AllArgsConstructor // Annotation
+@Table("pets") // Annotation
+public class PetEntity { // Class declaration
 	
-	@Id
+	@Id // Annotation
 	private Integer id;
 	
-	@Column("name")
+	@Column("name") // Annotation
 	private String name;
 	
-	@Column("age")
+	@Column("age") // Annotation
     private int age;
     
-    @Column("breed")
+    @Column("breed") // Annotation
     private String breed;
     
-    @Column("size")
+    @Column("size") // Annotation
     private String size;
     
-    @Column("sex")
+    @Column("sex") // Annotation
 	private String sex;
 	
-	@Column("description")
+	@Column("description") // Annotation
 	private String description;
 	
-	@Column("adoption_status")
+	@Column("adoption_status") // Annotation
     private String adoptionStatus; // Available, Pending, Adopted
 
 	public PetEntity(int id, String name, int age, String breed, String size, String sex, String description,
@@ -52,7 +52,7 @@ public class PetEntity {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Integer id) { // Method definition
 		this.id = id;
 	}
 
@@ -60,7 +60,7 @@ public class PetEntity {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) { // Method definition
 		this.name = name;
 	}
 
@@ -68,7 +68,7 @@ public class PetEntity {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(int age) { // Method definition
 		this.age = age;
 	}
 
@@ -76,7 +76,7 @@ public class PetEntity {
 		return breed;
 	}
 
-	public void setBreed(String breed) {
+	public void setBreed(String breed) { // Method definition
 		this.breed = breed;
 	}
 
@@ -84,7 +84,7 @@ public class PetEntity {
 		return size;
 	}
 
-	public void setSize(String size) {
+	public void setSize(String size) { // Method definition
 		this.size = size;
 	}
 
@@ -92,7 +92,7 @@ public class PetEntity {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(String sex) { // Method definition
 		this.sex = sex;
 	}
 
@@ -100,7 +100,7 @@ public class PetEntity {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(String description) { // Method definition
 		this.description = description;
 	}
 
@@ -108,7 +108,7 @@ public class PetEntity {
 		return adoptionStatus;
 	}
 
-	public void setAdoptionStatus(String adoptionStatus) {
+	public void setAdoptionStatus(String adoptionStatus) { // Method definition
 		this.adoptionStatus = adoptionStatus;
 	}
 

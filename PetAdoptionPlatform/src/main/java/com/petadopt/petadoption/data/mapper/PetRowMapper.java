@@ -1,16 +1,16 @@
-package com.petadopt.petadoption.data.mapper;
+package com.petadopt.petadoption.data.mapper; // Package declaration
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.ResultSet; // Import required class
+import java.sql.SQLException; // Import required class
 
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.lang.Nullable;
+import org.springframework.jdbc.core.RowMapper; // Import required class
+import org.springframework.lang.Nullable; // Import required class
 
-import com.petadopt.petadoption.data.entity.PetEntity;
+import com.petadopt.petadoption.data.entity.PetEntity; // Import required class
 
-public class PetRowMapper implements RowMapper<PetEntity> {
+public class PetRowMapper implements RowMapper<PetEntity> { // Class declaration
 
-	@Override
+	@Override // Annotation
 	public PetEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 		return new PetEntity(
 			rs.getInt("id"), 

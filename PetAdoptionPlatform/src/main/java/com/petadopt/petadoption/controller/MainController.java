@@ -1,32 +1,32 @@
-package com.petadopt.petadoption.controller;
+package com.petadopt.petadoption.controller; // Package declaration
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayList; // Import required class
+import java.util.List; // Import required class
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired; // Import required class
+import org.springframework.stereotype.Controller; // Import required class
+import org.springframework.ui.Model; // Import required class
+import org.springframework.web.bind.annotation.GetMapping; // Import required class
+import org.springframework.web.bind.annotation.RequestMapping; // Import required class
+import org.springframework.web.bind.annotation.ResponseBody; // Import required class
 
-import com.petadopt.petadoption.model.Pet;
-import com.petadopt.petadoption.service.PetService;
+import com.petadopt.petadoption.model.Pet; // Import required class
+import com.petadopt.petadoption.service.PetService; // Import required class
 
-@Controller
-@RequestMapping("/dashboard")
-public class MainController {
+@Controller // Annotation
+@RequestMapping("/dashboard") // Annotation
+public class MainController { // Class declaration
     
-    @Autowired
+    @Autowired // Annotation
     PetService service;
     
-    @GetMapping
+    @GetMapping // Annotation
     public String display(Model model) {
             
         return "index";
     }
     
-    @GetMapping("/loggedin")
+    @GetMapping("/loggedin") // Annotation
     public String displayLoggedIn(Model model) {
         
         List<Pet> pets = service.getPets();

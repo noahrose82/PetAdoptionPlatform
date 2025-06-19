@@ -1,34 +1,34 @@
-package com.petadopt.petadoption.data.entity;
+package com.petadopt.petadoption.data.entity; // Package declaration
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.annotation.Id; // Import required class
+import org.springframework.data.relational.core.mapping.Column; // Import required class
+import org.springframework.data.relational.core.mapping.Table; // Import required class
 
-@Table("users")
-public class UserEntity {
+@Table("users") // Annotation
+public class UserEntity { // Class declaration
 	
-	@Id
+	@Id // Annotation
 	private int id;
 	
-	@Column("first_name")
+	@Column("first_name") // Annotation
 	private String firstName;
 	
-	@Column("last_name")
+	@Column("last_name") // Annotation
 	private String lastName;
 	
-	@Column("username")
+	@Column("username") // Annotation
 	private String username;
 	
-	@Column("password")
+	@Column("password") // Annotation
 	private String password;
 	
-	@Column("email")
+	@Column("email") // Annotation
 	private String email;
 	
-	@Column("phone_number")
+	@Column("phone_number") // Annotation
 	private String phoneNumber;
 	
-	@Column("role")
+	@Column("role") // Annotation
 	private String role;
 	
 	public UserEntity(String firstName, String lastName, String username, String password, String email,
@@ -46,7 +46,7 @@ public class UserEntity {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(int id) { // Method definition
 		this.id = id;
 	}
 
@@ -54,7 +54,7 @@ public class UserEntity {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setFirstName(String firstName) { // Method definition
 		this.firstName = firstName;
 	}
 
@@ -62,7 +62,7 @@ public class UserEntity {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(String lastName) { // Method definition
 		this.lastName = lastName;
 	}
 
@@ -70,7 +70,7 @@ public class UserEntity {
 		return username;
 	}
 
-	public void setUsername(String username) {
+	public void setUsername(String username) { // Method definition
 		this.username = username;
 	}
 
@@ -78,7 +78,7 @@ public class UserEntity {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(String password) { // Method definition
 		this.password = password;
 	}
 
@@ -86,7 +86,7 @@ public class UserEntity {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) { // Method definition
 		this.email = email;
 	}
 
@@ -94,7 +94,7 @@ public class UserEntity {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) { // Method definition
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -102,7 +102,7 @@ public class UserEntity {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(String role) { // Method definition
 		this.role = role;
 	}
 }

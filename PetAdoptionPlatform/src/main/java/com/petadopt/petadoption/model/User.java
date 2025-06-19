@@ -1,26 +1,26 @@
-package com.petadopt.petadoption.model;
+package com.petadopt.petadoption.model; // Package declaration
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull; // Import required class
+import jakarta.validation.constraints.Size; // Import required class
+import lombok.AllArgsConstructor; // Import required class
+import lombok.Data; // Import required class
+import lombok.NoArgsConstructor; // Import required class
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class User {
+@Data // Annotation
+@NoArgsConstructor // Annotation
+@AllArgsConstructor // Annotation
+public class User { // Class declaration
 	
 	
     private String firstName;
     private String lastName;
     
-    @NotNull(message="Username is a required field")
-    @Size(min=5, max=20, message="Username must be between 5 and 20 characters")
+    @NotNull(message="Username is a required field") // Annotation
+    @Size(min=5, max=20, message="Username must be between 5 and 20 characters") // Annotation
     private String username;
     
-    @NotNull(message="Password is a required field")
-    @Size(min=3, max=15, message="Password must be between 3 and 15 characters")
+    @NotNull(message="Password is a required field") // Annotation
+    @Size(min=3, max=15, message="Password must be between 3 and 15 characters") // Annotation
     private String password;
     
     private String email;
@@ -29,8 +29,8 @@ public class User {
 
 	public User(
         	String firstName, String lastName,
-			@NotNull(message = "Username is a required field") @Size(min = 5, max = 20, message = "Username must be between 5 and 20 characters") String username,
-			@NotNull(message = "Password is a required field") @Size(min = 3, max = 15, message = "Password must be between 3 and 15 characters") String password,
+			@NotNull(message = "Username is a required field") @Size(min = 5, max = 20, message = "Username must be between 5 and 20 characters") String username, // Annotation
+			@NotNull(message = "Password is a required field") @Size(min = 3, max = 15, message = "Password must be between 3 and 15 characters") String password, // Annotation
 			String email, String phoneNumber, String role) {
                 
 		this.firstName = firstName;
@@ -46,7 +46,7 @@ public class User {
         return this.firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) { // Method definition
         this.firstName = firstName;
     }
 
@@ -54,7 +54,7 @@ public class User {
         return this.lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) { // Method definition
         this.lastName = lastName;
     }
 
@@ -62,7 +62,7 @@ public class User {
         return this.username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(String username) { // Method definition
         this.username = username;
     }
 
@@ -70,7 +70,7 @@ public class User {
         return this.password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) { // Method definition
         this.password = password;
     }
 
@@ -78,7 +78,7 @@ public class User {
         return this.email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) { // Method definition
         this.email = email;
     }
 
@@ -86,7 +86,7 @@ public class User {
         return this.phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) { // Method definition
         this.phoneNumber = phoneNumber;
     }
 
@@ -94,7 +94,7 @@ public class User {
         return this.role;
     }
 
-    public void setRole(String role) {
+    public void setRole(String role) { // Method definition
         this.role = role;
     }
 }

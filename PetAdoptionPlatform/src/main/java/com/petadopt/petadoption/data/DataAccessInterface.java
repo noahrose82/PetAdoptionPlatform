@@ -1,8 +1,8 @@
-package com.petadopt.petadoption.data;
+package com.petadopt.petadoption.data; // Package declaration
 
-import java.util.List;
+import java.util.List; // Import required class
 
-public interface DataAccessInterface <T> {
+public interface DataAccessInterface <T> { // Interface declaration
 	
 	public List<T> findAll();
 	public T findById(int id);

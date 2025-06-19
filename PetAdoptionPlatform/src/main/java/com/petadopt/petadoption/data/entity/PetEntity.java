@@ -1,39 +1,42 @@
-package com.petadopt.petadoption.model;
+package com.petadopt.petadoption.data.entity;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-/*import jakarta.persistence.*;*/
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-/*@Entity*/
-public class Pet {
-
-	private int id;
+@Table("pets")
+public class PetEntity {
 	
-	@NotNull(message="Name is a required field")
-    @Size(min=3, max=20, message="Name must be between 3 and 20 characters")
-    private String name;
+	@Id
+	private Integer id;
+	
+	@Column("name")
+	private String name;
+	
+	@Column("age")
     private int age;
+    
+    @Column("breed")
     private String breed;
+    
+    @Column("size")
     private String size;
     
-    @NotNull(message="Sex is a required field")
-    @Size(min=1, max=10, message="Sex must be between 1 and 10 characters")
-    private String sex;
-
-/*    @Column(length = 1000)*/
-    private String description;
-    
-    @NotNull(message="Adoption Status is a required field")
-    @Size(min=1, message="Adoption Status must have at least 1 character")
+    @Column("sex")
+	private String sex;
+	
+	@Column("description")
+	private String description;
+	
+	@Column("adoption_status")
     private String adoptionStatus; // Available, Pending, Adopted
-    
-	public Pet(int id, String name, int age, String breed, String size, String sex, String description,
+
+	public PetEntity(int id, String name, int age, String breed, String size, String sex, String description,
 			String adoptionStatus) {
 		this.id = id;
 		this.name = name;
@@ -44,12 +47,12 @@ public class Pet {
 		this.description = description;
 		this.adoptionStatus = adoptionStatus;
 	}
-	
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -89,8 +92,8 @@ public class Pet {
 		return sex;
 	}
 
-	public void setSex(String gender) {
-		this.sex = gender;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public String getDescription() {
@@ -108,6 +111,6 @@ public class Pet {
 	public void setAdoptionStatus(String adoptionStatus) {
 		this.adoptionStatus = adoptionStatus;
 	}
-    
-    
+
+	
 }

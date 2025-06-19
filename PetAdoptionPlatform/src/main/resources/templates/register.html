@@ -9,7 +9,7 @@
 	    <div layout:fragment="content">
 			<div class="container mt-4" style="max-width: 500px;">
 			    <h2 class="mb-3">New User</h2>
-			    <form action="#" th:action="@{doRegister}" th:object="${register}" method="post">
+			    <form action="#" th:action="@{doRegister}" th:object="${user}" method="post">
 			        <div class="mb-3">
 			            <label class="form-label">First Name</label>
 			            <input type="text" th:field="*{firstName}" class="form-control" required>
@@ -32,14 +32,36 @@
 			            <label class="form-label">Email</label>
 			            <input type="text" th:field="*{email}" class="form-control" required>
 			        </div>
-			        <div class="mb-3">
-			            <label class="form-label">Phone Number</label>
-			            <input type="text" th:field="*{phoneNumber}" class="form-control" required>
-			        </div>
-			        <div class="mb-3">
-			            <label class="form-label">Role</label>
-			            <input type="text" th:field="*{role}" class="form-control" required>
-			        </div>
+					<div class="mb-3">
+					    <label class="form-label">Phone Number</label>
+					    <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber" required>
+					</div>
+
+					<script>
+					    document.getElementById('phoneNumber').addEventListener('input', function (e) {
+					        let input = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
+					        if (input.length > 10) input = input.slice(0, 10); // Limit to 10 digits
+
+					        let formatted = input;
+					        if (input.length > 6) {
+					            formatted = `(${input.slice(0, 3)}) ${input.slice(3, 6)}-${input.slice(6)}`;
+					        } else if (input.length > 3) {
+					            formatted = `(${input.slice(0, 3)}) ${input.slice(3)}`;
+					        } else if (input.length > 0) {
+					            formatted = `(${input}`;
+					        }
+
+					        e.target.value = formatted;
+					    });
+					</script>
+					<div class="mb-3">
+					    <label class="form-label">Role</label>
+					    <select th:field="*{role}" class="form-select" required>
+					        <option value="" disabled selected>Select role</option>
+					        <option value="user">User</option>
+					        <option value="admin">Admin</option>
+					    </select>
+					</div>
 			        <div class="mb-3">
 			            <button type="submit" class="btn btn-success w-100">Register</button>
 			        </div>

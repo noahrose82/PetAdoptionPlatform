@@ -22,7 +22,7 @@ public class PetController {
 
 	@GetMapping("/new")
 	public String displayNewPetForm(Model model) {
-        model.addAttribute("pet", new Pet(null, 0, null, null, null, null, null));
+        model.addAttribute("pet", new Pet(0, null, 0, null, null, null, null, null));
         return "pet/create";
     }
     

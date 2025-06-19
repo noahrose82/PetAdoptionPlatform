@@ -1,6 +1,6 @@
 package com.petadopt.petadoption.controller;
 
-import com.petadopt.petadoption.model.Register;
+import com.petadopt.petadoption.data.entity.UserEntity;
 import com.petadopt.petadoption.model.User;
 import com.petadopt.petadoption.service.SecurityService;
 import com.petadopt.petadoption.service.UserService;
@@ -25,24 +25,25 @@ public class UserController {
 
     @GetMapping("/register")
     public String displayRegistration(Model model) {
-        model.addAttribute("register", new Register(null, null, null, null, null, null, null));
+        model.addAttribute("user", new User(null, null, null, null, null, null, null));
         return "register";
     }
 
    	@PostMapping("/doRegister")
-    public String doRegister(@Valid Register register, BindingResult bindingResult, Model model) {
+    public String doRegister(@Valid User user, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             return "register";
         }
         
-        service.register(register);
+        
+        UserEntity newUser = service.register(user);
         return "redirect:/user/login";
     }
     
     @GetMapping("/login")
     public String displayLogin(Model model) {
-        model.addAttribute("loginUser", new User());
+        model.addAttribute("loginUser", new User(null, null, null, null, null, null, null));
         return "login";
     }
     
@@ -51,7 +52,7 @@ public class UserController {
 
 	    boolean loginFailed = false;
 	
-	    if (security.authenticate(user.getUsername(), user.getPassword())) {
+	    if (service.login(user)) {
 	        return "redirect:/dashboard/loggedin";
 	        
 	    } else {
@@ -59,7 +60,7 @@ public class UserController {
 	    }
 	
 	    model.addAttribute("loginFailed", loginFailed);
-	    model.addAttribute("loginUser", new User());
+	    model.addAttribute("loginUser", new User(null, null, null, null, null, null, null));
 	    return "login";
     }
 }

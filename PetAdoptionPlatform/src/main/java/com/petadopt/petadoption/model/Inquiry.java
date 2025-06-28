@@ -1,26 +1,28 @@
-package com.petadopt.petadoption.model; // Package declaration
+package com.petadopt.petadoption.model;
 
 /*import jakarta.persistence.*;*/
-import lombok.AllArgsConstructor; // Import required class
-import lombok.Data; // Import required class
-import lombok.NoArgsConstructor; // Import required class
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data // Annotation
-@NoArgsConstructor // Annotation
-@AllArgsConstructor // Annotation
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 /*@Entity*/
-public class Inquiry { // Class declaration
+
+//Main class or interface for inquiry operations
+public class Inquiry {
 
 /*    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)*/ // Annotation
+    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
     private Long id;
 
 /*    @ManyToOne
-    @JoinColumn(name = "user_id")*/ // Annotation
+    @JoinColumn(name = "user_id")*/
     private User user;
 
 /*    @ManyToOne
-    @JoinColumn(name = "pet_id")*/ // Annotation
+    @JoinColumn(name = "pet_id")*/
     private Pet pet;
 
 /*    @Column(length = 1000)*/

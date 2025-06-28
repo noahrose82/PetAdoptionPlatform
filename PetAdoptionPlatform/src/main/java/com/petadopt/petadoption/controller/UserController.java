@@ -1,35 +1,36 @@
-package com.petadopt.petadoption.controller; // Package declaration
+package com.petadopt.petadoption.controller;
 
-import com.petadopt.petadoption.data.entity.UserEntity; // Import required class
-import com.petadopt.petadoption.model.User; // Import required class
-import com.petadopt.petadoption.service.SecurityService; // Import required class
-import com.petadopt.petadoption.service.UserService; // Import required class
+import com.petadopt.petadoption.data.entity.UserEntity;
+import com.petadopt.petadoption.model.User;
+import com.petadopt.petadoption.service.SecurityService;
+import com.petadopt.petadoption.service.UserService;
 
-import jakarta.validation.Valid; // Import required class
+import jakarta.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired; // Import required class
-import org.springframework.stereotype.Controller; // Import required class
-import org.springframework.ui.Model; // Import required class
-import org.springframework.validation.BindingResult; // Import required class
-import org.springframework.web.bind.annotation.*; // Import required class
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-@Controller // Annotation
-@RequestMapping("/user") // Annotation
-public class UserController { // Class declaration
+@Controller
+//Main class for handling user-related actions
+@RequestMapping("/user")
+public class UserController {
     
-    @Autowired // Annotation
+    @Autowired
     UserService service;
     
-    @Autowired // Annotation
+    @Autowired
     private SecurityService security;
 
-    @GetMapping("/register") // Annotation
+    @GetMapping("/register")
     public String displayRegistration(Model model) {
         model.addAttribute("user", new User(null, null, null, null, null, null, null));
         return "register";
     }
 
-   	@PostMapping("/doRegister") // Annotation
+   	@PostMapping("/doRegister")
     public String doRegister(@Valid User user, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
@@ -41,13 +42,13 @@ public class UserController { // Class declaration
         return "redirect:/user/login";
     }
     
-    @GetMapping("/login") // Annotation
+    @GetMapping("/login")
     public String displayLogin(Model model) {
         model.addAttribute("loginUser", new User(null, null, null, null, null, null, null));
         return "login";
     }
     
-    @PostMapping("/doLogin") // Annotation
+    @PostMapping("/doLogin")
     public String doLogin(User user, BindingResult bindingResult, Model model) {
 
 	    boolean loginFailed = false;

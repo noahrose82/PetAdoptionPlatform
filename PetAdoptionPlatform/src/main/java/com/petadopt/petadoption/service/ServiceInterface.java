@@ -1,9 +1,11 @@
-package com.petadopt.petadoption.service; // Package declaration
+package com.petadopt.petadoption.service;
 
-import org.springframework.ui.Model; // Import required class
-import org.springframework.validation.BindingResult; // Import required class
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
-public interface ServiceInterface { // Interface declaration
-	
+//Main class or interface for serviceinterface operations
+public interface ServiceInterface {
+    // Interface for shared service logic
+
 
 }

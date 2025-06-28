@@ -1,38 +1,102 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/default">
-	<head>
-	    <title>Pets</title>
-	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-	</head>
-	<body>
-	    <div layout:fragment="content">
-			<table>
-				<thead>
-					<tr>
-						<th style="text-align:center">Name</th>
-						<th style="text-align:center">Age</th>
-						<th style="text-align:center">Breed</th>
-						<th style="text-align:center">Size</th>
-						<th style="text-align:center">Sex</th>
-						<th style="text-align:center">Description</th>
-						<th style="text-align:center">Adoption Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:if="${pets.empty}">
-						<td style="text-align:center" colspan="4"> No Pets Available </td>
-					</tr>
-					<tr th:each="pet : ${pets}">
-						<td style="text-align:center"><h5 th:text="${pet.name}">Name</h5></td>
-						<td style="text-align:center"><h5 th:text="${pet.age}">Age</h5></td>
-						<td style="text-align:center"><h5 th:text="${pet.breed}">Breed</h5></td>
-						<td style="text-align:center"><h5 th:text="${pet.size}">Size</h5></td>
-						<td style="text-align:center"><h5 th:text="${pet.sex}">Sex</h5></td>
-						<td style="text-align:center"><h5 th:text="${pet.description}">Description</h5></td>
-						<td style="text-align:center"><h5 th:text="${pet.adoptionStatus}">Status</h5></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/default">
+<head>
+    <title>Pets</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        .btn-custom-edit {
+            background-color: #f0ad4e;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom-delete {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom-edit:hover {
+            background-color: #ec971f;
+        }
+
+        .btn-custom-delete:hover {
+            background-color: #c9302c;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Breed</th>
+            <th>Size</th>
+            <th>Sex</th>
+            <th>Description</th>
+            <th>Adoption Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${pets.empty}">
+            <td colspan="8">No Pets Available</td>
+        </tr>
+        <tr th:each="pet : ${pets}">
+            <td><h5 th:text="${pet.name}">Name</h5></td>
+            <td><h5 th:text="${pet.age}">Age</h5></td>
+            <td><h5 th:text="${pet.breed}">Breed</h5></td>
+            <td><h5 th:text="${pet.size}">Size</h5></td>
+            <td><h5 th:text="${pet.sex}">Sex</h5></td>
+            <td><h5 th:text="${pet.description}">Description</h5></td>
+            <td><h5 th:text="${pet.adoptionStatus}">Status</h5></td>
+            <td>
+                <a th:href="@{'/pets/update/' + ${pet.id}}" class="btn btn-sm btn-custom-edit">Edit</a>
+                <form th:action="@{'/pets/delete/' + ${pet.id}}"
+                      method="post"
+                      class="delete-form"
+                      onsubmit="return confirmDelete(this)"
+                      style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-custom-delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(form) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#aaa',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+        return false;
+    }
+</script>
+</body>
 </html>

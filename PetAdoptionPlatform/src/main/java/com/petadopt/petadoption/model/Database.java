@@ -1,8 +1,9 @@
-package com.petadopt.petadoption.model; // Package declaration
+package com.petadopt.petadoption.model;
 
-import java.util.List; // Import required class
+import java.util.List;
 
-public class Database { // Class declaration
+//Main class or interface for database operations
+public class Database {
     private List<User> users;
     private List<Pet> pets;
 

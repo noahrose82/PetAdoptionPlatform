@@ -1,10 +1,10 @@
-package com.petadopt.petadoption.data.repository; // Package declaration
+package com.petadopt.petadoption.data.repository;
 
-import java.util.List; // Import required class
+import java.util.List;
 
-import org.springframework.data.repository.CrudRepository; // Import required class
+import org.springframework.data.repository.CrudRepository;
 
-import com.petadopt.petadoption.data.entity.PetEntity; // Import required class
+import com.petadopt.petadoption.data.entity.PetEntity;
 
-public interface PetRepository extends CrudRepository<PetEntity, Integer> { // Interface declaration
+public interface PetRepository extends CrudRepository<PetEntity, Integer> {
 }

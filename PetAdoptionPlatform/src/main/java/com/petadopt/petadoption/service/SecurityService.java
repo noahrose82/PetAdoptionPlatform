@@ -1,9 +1,9 @@
-package com.petadopt.petadoption.service; // Package declaration
+package com.petadopt.petadoption.service;
 
-import org.springframework.stereotype.Service; // Import required class
+import org.springframework.stereotype.Service;
 
-@Service // Annotation
-public class SecurityService { // Class declaration
+@Service
+public class SecurityService {
 	
 	public boolean authenticate(String username, String password) {
 		

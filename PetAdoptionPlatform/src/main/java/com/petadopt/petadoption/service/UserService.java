@@ -1,23 +1,25 @@
-package com.petadopt.petadoption.service; // Package declaration
+package com.petadopt.petadoption.service;
 
-import com.petadopt.petadoption.data.UserDataService; // Import required class
-import com.petadopt.petadoption.data.entity.UserEntity; // Import required class
-import com.petadopt.petadoption.model.User; // Import required class
+import com.petadopt.petadoption.data.UserDataService;
+import com.petadopt.petadoption.data.entity.UserEntity;
+import com.petadopt.petadoption.model.User;
 
-import org.springframework.beans.factory.annotation.Autowired; // Import required class
-import org.springframework.stereotype.Service; // Import required class
-import org.springframework.ui.Model; // Import required class
-import org.springframework.validation.BindingResult; // Import required class
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
-@Service // Annotation
-public class UserService { // Class declaration
+@Service
+public class UserService {
 	
-	@Autowired // Annotation
+	@Autowired
 	private UserDataService service;
-
+    
+	// Method to handle register functionality
 	public UserEntity register(User user) {
 		
 		UserEntity newUser = new UserEntity(
+									null,
 									user.getFirstName(),
 									user.getLastName(),
 									user.getUsername(),
@@ -30,6 +32,7 @@ public class UserService { // Class declaration
 		return service.createUser(newUser);
 	}
 	
+    // Method to handle login functionality
 	public boolean login(User user) {
 		
 		UserEntity userCreds = service.findByUsername(user.getUsername());

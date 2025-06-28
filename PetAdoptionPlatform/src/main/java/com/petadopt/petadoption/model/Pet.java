@@ -1,36 +1,36 @@
-package com.petadopt.petadoption.model; // Package declaration
+package com.petadopt.petadoption.model;
 
-import jakarta.validation.constraints.NotNull; // Import required class
-import jakarta.validation.constraints.Size; // Import required class
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 /*import jakarta.persistence.*;*/
-import lombok.AllArgsConstructor; // Import required class
-import lombok.Data; // Import required class
-import lombok.NoArgsConstructor; // Import required class
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data // Annotation
-@NoArgsConstructor // Annotation
-@AllArgsConstructor // Annotation
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 /*@Entity*/
-public class Pet { // Class declaration
+public class Pet {
 
 	private int id;
 	
-	@NotNull(message="Name is a required field") // Annotation
-    @Size(min=3, max=20, message="Name must be between 3 and 20 characters") // Annotation
+	@NotNull(message="Name is a required field")
+    @Size(min=3, max=20, message="Name must be between 3 and 20 characters")
     private String name;
     private int age;
     private String breed;
     private String size;
     
-    @NotNull(message="Sex is a required field") // Annotation
-    @Size(min=1, max=10, message="Sex must be between 1 and 10 characters") // Annotation
+    @NotNull(message="Sex is a required field")
+    @Size(min=1, max=10, message="Sex must be between 1 and 10 characters")
     private String sex;
 
 /*    @Column(length = 1000)*/
     private String description;
     
-    @NotNull(message="Adoption Status is a required field") // Annotation
-    @Size(min=1, message="Adoption Status must have at least 1 character") // Annotation
+    @NotNull(message="Adoption Status is a required field")
+    @Size(min=1, message="Adoption Status must have at least 1 character")
     private String adoptionStatus; // Available, Pending, Adopted
     
 	public Pet(int id, String name, int age, String breed, String size, String sex, String description,
@@ -44,20 +44,21 @@ public class Pet { // Class declaration
 		this.description = description;
 		this.adoptionStatus = adoptionStatus;
 	}
-	
+	 // Method to handle getid functionality
 	public int getId() {
 		return id;
 	}
+    // Method to handle setid functionality
 
-	public void setId(int id) { // Method definition
+	public void setId(int id) {
 		this.id = id;
 	}
-
+	// ... [other getters/setters omitted for brevity]
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) { // Method definition
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -65,7 +66,7 @@ public class Pet { // Class declaration
 		return age;
 	}
 
-	public void setAge(int age) { // Method definition
+	public void setAge(int age) {
 		this.age = age;
 	}
 
@@ -73,7 +74,7 @@ public class Pet { // Class declaration
 		return breed;
 	}
 
-	public void setBreed(String breed) { // Method definition
+	public void setBreed(String breed) {
 		this.breed = breed;
 	}
 
@@ -81,7 +82,7 @@ public class Pet { // Class declaration
 		return size;
 	}
 
-	public void setSize(String size) { // Method definition
+	public void setSize(String size) {
 		this.size = size;
 	}
 
@@ -89,7 +90,7 @@ public class Pet { // Class declaration
 		return sex;
 	}
 
-	public void setSex(String gender) { // Method definition
+	public void setSex(String gender) {
 		this.sex = gender;
 	}
 
@@ -97,7 +98,7 @@ public class Pet { // Class declaration
 		return description;
 	}
 
-	public void setDescription(String description) { // Method definition
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -105,9 +106,14 @@ public class Pet { // Class declaration
 		return adoptionStatus;
 	}
 
-	public void setAdoptionStatus(String adoptionStatus) { // Method definition
+	public void setAdoptionStatus(String adoptionStatus) {
 		this.adoptionStatus = adoptionStatus;
 	}
     
-    
+    @Override
+	public String toString() {
+		return "Pet [id=" + id + ", name=" + name + ", age=" + age + ", breed=" + breed + ", size=" + size + ", sex="
+				+ sex + ", description=" + description + ", adoptionStatus=" + adoptionStatus + "]";
+	}
+
 }

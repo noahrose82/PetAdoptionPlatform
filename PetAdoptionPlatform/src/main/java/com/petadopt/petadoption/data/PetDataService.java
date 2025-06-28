@@ -1,25 +1,28 @@
-package com.petadopt.petadoption.data; // Package declaration
+package com.petadopt.petadoption.data;
 
-import java.util.ArrayList; // Import required class
-import java.util.List; // Import required class
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired; // Import required class
-import org.springframework.stereotype.Service; // Import required class
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.petadopt.petadoption.data.entity.PetEntity; // Import required class
-import com.petadopt.petadoption.data.repository.PetRepository; // Import required class
+import com.petadopt.petadoption.data.entity.PetEntity;
+import com.petadopt.petadoption.data.repository.PetRepository;
 
-@Service // Annotation
-public class PetDataService implements DataAccessInterface { // Class declaration
+@Service
+//Main class or interface for petdataservice operations
+public class PetDataService implements DataAccessInterface<PetEntity> {
 
-	@Autowired // Annotation
+	
+	@Autowired
 	private PetRepository petRepo;
 	
 	public PetDataService(PetRepository petRepo) {
 		
 		this.petRepo = petRepo;
 	}
-
+	   // Method to handle findall functionality
 	public List<PetEntity> findAll() {
 		
 		List<PetEntity> pets = new ArrayList<PetEntity>();
@@ -38,26 +41,26 @@ public class PetDataService implements DataAccessInterface { // Class declaratio
 	}
 
 	public PetEntity findById(int id) {
-
-		return null;
+		Optional<PetEntity> pet = petRepo.findById(id);
+		return pet.isPresent() ? pet.get() : null; 
 	}
 
-	@Override // Annotation
-	public boolean create(Object t) {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	public boolean create(PetEntity newPet) {
+		PetEntity resultPet = petRepo.save(newPet);
+		return resultPet != null;
 	}
 
-	@Override // Annotation
-	public boolean update(Object t, int id) {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	public boolean update(PetEntity pet) {
+		PetEntity resultPet = petRepo.save(pet);
+		return resultPet != null;
 	}
 
-	@Override // Annotation
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	public boolean delete(PetEntity pet) {
+		petRepo.delete(pet);
+		return !petRepo.existsById(pet.getId());
 	}
 	
 	

@@ -1,9 +1,9 @@
-package com.petadopt.petadoption.data.repository; // Package declaration
+package com.petadopt.petadoption.data.repository;
 
-import org.springframework.data.repository.CrudRepository; // Import required class
+import org.springframework.data.repository.CrudRepository;
 
-import com.petadopt.petadoption.data.entity.UserEntity; // Import required class
+import com.petadopt.petadoption.data.entity.UserEntity;
 
-public interface UserRepository extends CrudRepository<UserEntity, Integer> { // Interface declaration
+public interface UserRepository extends CrudRepository<UserEntity, Integer> {
     UserEntity findByUsername(String username);
 }

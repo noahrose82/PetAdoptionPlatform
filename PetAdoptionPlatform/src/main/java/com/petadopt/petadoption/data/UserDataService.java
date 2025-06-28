@@ -1,18 +1,20 @@
-package com.petadopt.petadoption.data; // Package declaration
+package com.petadopt.petadoption.data;
 
-import java.util.ArrayList; // Import required class
-import java.util.List; // Import required class
+import java.util.ArrayList;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired; // Import required class
-import org.springframework.stereotype.Service; // Import required class
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.petadopt.petadoption.data.entity.UserEntity; // Import required class
-import com.petadopt.petadoption.data.repository.UserRepository; // Import required class
+import com.petadopt.petadoption.data.entity.UserEntity;
+import com.petadopt.petadoption.data.repository.UserRepository;
 
-@Service // Annotation
-public class UserDataService { // Class declaration
+@Service
+//Main class or interface for userdata service operations
 
-	@Autowired // Annotation
+public class UserDataService {
+
+	@Autowired
 	private UserRepository userRepo;
 		
 	public UserDataService(UserRepository userRepo) {
@@ -36,7 +38,7 @@ public class UserDataService { // Class declaration
 		
 		return users.size() + 1;
 	}
-
+    // Method to handle findall functionality
 	public UserEntity findByUsername(String username) {
 		
 		return userRepo.findByUsername(username);

@@ -41,6 +41,10 @@
 			            <input type="text" th:field="*{adoptionStatus}" class="form-control" value="Available">
 			            <td><h5 style="color:red" th:if="${#fields.hasErrors('adoptionStatus')}" th:errors="*{adoptionStatus}">Adoption Status</h5></td>
 			        </div>
+			        <div class="mb-3" style ="display: none;">
+			            <label class="form-label">id</label>
+			            <input type="text" th:field="*{id}" class="form-control" value=0>
+			        </div>
 			        <button type="submit" class="btn btn-primary">Save Pet</button>
 			    </form>
 			</div>

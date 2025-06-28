@@ -1,26 +1,26 @@
-package com.petadopt.petadoption.model; // Package declaration
+package com.petadopt.petadoption.model;
 
-import jakarta.validation.constraints.NotNull; // Import required class
-import jakarta.validation.constraints.Size; // Import required class
-import lombok.AllArgsConstructor; // Import required class
-import lombok.Data; // Import required class
-import lombok.NoArgsConstructor; // Import required class
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data // Annotation
-@NoArgsConstructor // Annotation
-@AllArgsConstructor // Annotation
-public class User { // Class declaration
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
 	
 	
     private String firstName;
     private String lastName;
     
-    @NotNull(message="Username is a required field") // Annotation
-    @Size(min=5, max=20, message="Username must be between 5 and 20 characters") // Annotation
+    @NotNull(message="Username is a required field")
+    @Size(min=5, max=20, message="Username must be between 5 and 20 characters")
     private String username;
     
-    @NotNull(message="Password is a required field") // Annotation
-    @Size(min=3, max=15, message="Password must be between 3 and 15 characters") // Annotation
+    @NotNull(message="Password is a required field")
+    @Size(min=3, max=15, message="Password must be between 3 and 15 characters")
     private String password;
     
     private String email;
@@ -29,8 +29,8 @@ public class User { // Class declaration
 
 	public User(
         	String firstName, String lastName,
-			@NotNull(message = "Username is a required field") @Size(min = 5, max = 20, message = "Username must be between 5 and 20 characters") String username, // Annotation
-			@NotNull(message = "Password is a required field") @Size(min = 3, max = 15, message = "Password must be between 3 and 15 characters") String password, // Annotation
+			@NotNull(message = "Username is a required field") @Size(min = 5, max = 20, message = "Username must be between 5 and 20 characters") String username,
+			@NotNull(message = "Password is a required field") @Size(min = 3, max = 15, message = "Password must be between 3 and 15 characters") String password,
 			String email, String phoneNumber, String role) {
                 
 		this.firstName = firstName;
@@ -41,20 +41,20 @@ public class User { // Class declaration
 		this.phoneNumber = phoneNumber;
 		this.role = role;
 	}
-
+	// Method to handle getfirstname functionality
     public String getFirstName() {
         return this.firstName;
     }
-
-    public void setFirstName(String firstName) { // Method definition
+    // Method to handle setfirstname functionality
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    // ... [other getters/setters omitted for brevity]
     public String getLastName() {
         return this.lastName;
     }
 
-    public void setLastName(String lastName) { // Method definition
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -62,7 +62,7 @@ public class User { // Class declaration
         return this.username;
     }
 
-    public void setUsername(String username) { // Method definition
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -70,7 +70,7 @@ public class User { // Class declaration
         return this.password;
     }
 
-    public void setPassword(String password) { // Method definition
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -78,7 +78,7 @@ public class User { // Class declaration
         return this.email;
     }
 
-    public void setEmail(String email) { // Method definition
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -86,7 +86,7 @@ public class User { // Class declaration
         return this.phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) { // Method definition
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -94,7 +94,7 @@ public class User { // Class declaration
         return this.role;
     }
 
-    public void setRole(String role) { // Method definition
+    public void setRole(String role) {
         this.role = role;
     }
 }

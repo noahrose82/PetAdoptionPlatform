@@ -5,7 +5,7 @@ import com.petadopt.petadoption.model.User;
 import com.petadopt.petadoption.service.SecurityService;
 import com.petadopt.petadoption.service.UserService;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-//Main class for handling user-related actions
 @RequestMapping("/user")
+//Main class for handling user-related actions
 public class UserController {
     
     @Autowired
@@ -37,18 +37,12 @@ public class UserController {
             return "register";
         }
         
-        
         UserEntity newUser = service.register(user);
         return "redirect:/user/login";
     }
     
-    @GetMapping("/login")
-    public String displayLogin(Model model) {
-        model.addAttribute("loginUser", new User(null, null, null, null, null, null, null));
-        return "login";
-    }
-    
-    @PostMapping("/doLogin")
+ /*   
+ 	@PostMapping("/doLogin")
     public String doLogin(User user, BindingResult bindingResult, Model model) {
 
 	    boolean loginFailed = false;
@@ -64,4 +58,5 @@ public class UserController {
 	    model.addAttribute("loginUser", new User(null, null, null, null, null, null, null));
 	    return "login";
     }
+    */
 }

@@ -5,6 +5,7 @@ import com.petadopt.petadoption.data.entity.UserEntity;
 import com.petadopt.petadoption.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,12 +19,14 @@ public class UserService {
 	// Method to handle register functionality
 	public UserEntity register(User user) {
 		
+		String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());  
+		
 		UserEntity newUser = new UserEntity(
 									null,
 									user.getFirstName(),
 									user.getLastName(),
 									user.getUsername(),
-									user.getPassword(),
+									encodedPassword,
 									user.getEmail(),
 									user.getPhoneNumber(),
 									user.getRole()

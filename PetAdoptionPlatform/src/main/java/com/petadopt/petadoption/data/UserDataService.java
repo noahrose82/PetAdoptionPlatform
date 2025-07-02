@@ -38,6 +38,7 @@ public class UserDataService {
 		
 		return users.size() + 1;
 	}
+	
     // Method to handle findall functionality
 	public UserEntity findByUsername(String username) {
 		

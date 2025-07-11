@@ -27,15 +27,5 @@ public class MainController {
             
         return "index";
     }
-    
-    @GetMapping("/loggedin")
-    public String displayLoggedIn(Model model) {
-        
-        List<Pet> pets = service.getPets();
-        
-        model.addAttribute("title", "List of Pets");
-        model.addAttribute("pets", pets);
-        
-        return "pets";
-    }
+
 }

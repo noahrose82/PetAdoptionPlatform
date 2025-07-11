@@ -8,23 +8,23 @@
 
     <style>
         .btn-custom-edit {
-            background-color: #f0ad4e;
+            background-color: rgb(255, 0, 255);
             color: white;
             border: none;
         }
 
         .btn-custom-delete {
-            background-color: #d9534f;
+            background-color: rgb(128, 0, 255);
             color: white;
             border: none;
         }
 
         .btn-custom-edit:hover {
-            background-color: #ec971f;
+            background-color: rgb(255, 0, 128);
         }
 
         .btn-custom-delete:hover {
-            background-color: #c9302c;
+            background-color: rgb(64, 0, 128);
         }
 
         table {
@@ -40,48 +40,56 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Breed</th>
-            <th>Size</th>
-            <th>Sex</th>
-            <th>Description</th>
-            <th>Adoption Status</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${pets.empty}">
-            <td colspan="8">No Pets Available</td>
-        </tr>
-        <tr th:each="pet : ${pets}">
-            <td><h5 th:text="${pet.name}">Name</h5></td>
-            <td><h5 th:text="${pet.age}">Age</h5></td>
-            <td><h5 th:text="${pet.breed}">Breed</h5></td>
-            <td><h5 th:text="${pet.size}">Size</h5></td>
-            <td><h5 th:text="${pet.sex}">Sex</h5></td>
-            <td><h5 th:text="${pet.description}">Description</h5></td>
-            <td><h5 th:text="${pet.adoptionStatus}">Status</h5></td>
-            <td>
-                <a th:href="@{'/pets/update/' + ${pet.id}}" class="btn btn-sm btn-custom-edit">Edit</a>
-                <form th:action="@{'/pets/delete/' + ${pet.id}}"
-                      method="post"
-                      class="delete-form"
-                      onsubmit="return confirmDelete(this)"
-                      style="display:inline;">
-                    <button type="submit" class="btn btn-sm btn-custom-delete">Delete</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="container mt-4">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Breed</th>
+                <th>Size</th>
+                <th>Sex</th>
+                <th>Description</th>
+                <th>Adoption Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${pets.empty}">
+                <td colspan="8">No Pets Available</td>
+            </tr>
+            <tr th:each="pet : ${pets}">
+                <td><h5 th:text="${pet.name}">Name</h5></td>
+                <td><h5 th:text="${pet.age}">Age</h5></td>
+                <td><h5 th:text="${pet.breed}">Breed</h5></td>
+                <td><h5 th:text="${pet.size}">Size</h5></td>
+                <td><h5 th:text="${pet.sex}">Sex</h5></td>
+                <td><h5 th:text="${pet.description}">Description</h5></td>
+                <td><h5 th:text="${pet.adoptionStatus}">Status</h5></td>
+                <td>
+                    <a th:href="@{'/pets/display/' + ${pet.id}}" class="btn btn-sm btn-custom-edit">Preview</a>
+                    <a th:href="@{'/pets/update/' + ${pet.id}}" class="btn btn-sm btn-custom-edit">Edit</a>
+                    <form th:action="@{'/pets/delete/' + ${pet.id}}"
+                          method="post"
+                          class="delete-form"
+                          onsubmit="return confirmDelete(event, this)"
+                          style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-custom-delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-    function confirmDelete(form) {
+    function confirmDelete(event, form) {
+        event.preventDefault(); // Prevent form from submitting immediately
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -92,9 +100,10 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                form.submit();
+                form.submit(); // Submit form only if confirmed
             }
         });
+
         return false;
     }
 </script>

@@ -33,6 +33,17 @@ public class Pet {
     @Size(min=1, message="Adoption Status must have at least 1 character")
     private String adoptionStatus; // Available, Pending, Adopted
     
+	public Pet() {
+		this.id = 0;
+		this.name = "";
+		this.age = 0;
+		this.breed = "";
+		this.size = "";
+		this.sex = "";
+		this.description = "";
+		this.adoptionStatus = "";
+	}
+    
 	public Pet(int id, String name, int age, String breed, String size, String sex, String description,
 			String adoptionStatus) {
 		this.id = id;

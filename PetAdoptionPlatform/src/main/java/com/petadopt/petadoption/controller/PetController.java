@@ -4,11 +4,21 @@ import com.petadopt.petadoption.model.Pet;
 import com.petadopt.petadoption.service.PetService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.Base64;
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,10 +27,70 @@ import javax.validation.Valid;
 //Main class for handling pet-related operations
 @RequestMapping("/pets")
 public class PetController {
-
+	
     @Autowired
     private PetService petService;
 
+	String hostName = "localhost";
+    String route;
+    int port = 8080;
+    
+	private String credentials = "tests:tests";
+	private String base64Creds = Base64.getEncoder().encodeToString(credentials.getBytes());
+
+    @GetMapping("/display")
+    public String displayLoggedIn(Model model) {
+        
+        route = "/api/pets";
+        
+        String url = "http://" + hostName + ":" + port + route;
+        RestTemplate restTemplate = new RestTemplate();
+        
+        HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+		headers.add("Authorization", "Basic " + base64Creds);
+		HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<List<Pet>> response = restTemplate.exchange(
+            													url, 
+            													HttpMethod.GET, 
+            													entity, 
+            													new ParameterizedTypeReference<List<Pet>>() {});
+        List<Pet> pets = response.getBody();
+        
+        model.addAttribute("title", "List of Pets");
+        model.addAttribute("pets", pets);
+        
+        return "pets";
+    }
+    
+   	@GetMapping("/display/{id}")
+   	public String displaySelected(@PathVariable Integer id, Model model) {
+           
+           route = "/api/pets/" + id;
+           
+	        String url = "http://" + hostName + ":" + port + route;
+	        RestTemplate restTemplate = new RestTemplate();
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+            headers.add("Authorization", "Basic " + base64Creds);
+            HttpEntity<Void> entity = new HttpEntity<>(headers);
+            
+	        ResponseEntity<Pet> response = restTemplate.exchange(
+	            													url, 
+	            													HttpMethod.GET, 
+	            													entity, 
+	            													new ParameterizedTypeReference<Pet>() {});
+	            											
+           Pet pet = response.getBody();
+           
+           model.addAttribute("title", "List of Pets");
+        	model.addAttribute("pets", List.of(pet));
+           
+           return "pets";
+  	}
+	
     // Method to display all pets
 	@GetMapping("/new")
 	public String displayNewPetForm(Model model) {
@@ -54,12 +124,13 @@ public class PetController {
         }
         
         petService.updatePet(pet);
-        return "redirect:/dashboard/loggedin";
+        return "redirect:/pets/display";
     }
     
     @PostMapping("delete/{id}")
     public String deletePet(@PathVariable Integer id, Model model) {
         petService.deletePet(petService.getPetById(id));
-        return "redirect:/dashboard/loggedin";
+        return "redirect:/pets/display";
     }
+    
 }

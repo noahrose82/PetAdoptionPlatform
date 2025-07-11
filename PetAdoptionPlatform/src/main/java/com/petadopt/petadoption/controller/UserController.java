@@ -38,7 +38,7 @@ public class UserController {
         }
         
         UserEntity newUser = service.register(user);
-        return "redirect:/user/login";
+        return "redirect:/login";
     }
     
  /*   

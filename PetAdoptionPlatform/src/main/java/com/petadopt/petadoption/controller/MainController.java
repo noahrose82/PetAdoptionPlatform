@@ -1,3 +1,7 @@
+/**
+ * Main controller that handles the application's landing or root endpoints.
+ * Provides a central point of routing for basic views or pages.
+ */
 package com.petadopt.petadoption.controller;
 
 import java.util.ArrayList;
@@ -16,13 +20,18 @@ import com.petadopt.petadoption.service.PetService;
 @Controller
 //Main class for handling main page operations
 @RequestMapping("/dashboard")
-public class MainController {
+/**
+ * Central web controller for the application.
+ */
+/** Method */
+    public class MainController {
     
     @Autowired
     PetService service;
     
     // Method to handle home page display
     @GetMapping
+    /** Method */
     public String display(Model model) {
             
         return "index";

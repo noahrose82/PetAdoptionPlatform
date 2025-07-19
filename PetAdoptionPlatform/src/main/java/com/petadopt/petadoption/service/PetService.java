@@ -1,3 +1,7 @@
+/**
+ * Service class handling business logic related to pets.
+ * Provides methods for pet retrieval, updates, and deletion.
+ */
 package com.petadopt.petadoption.service;
 
 import com.petadopt.petadoption.data.PetDataService;
@@ -13,13 +17,19 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PetService {
+/**
+ * Business logic for managing pet entities.
+ */
+/** Method */
+    public class PetService {
 	
 	@Autowired
-	private PetDataService service;
+	/** Field */
+    private PetDataService service;
 
 	// get all
-	public List<Pet> getPets() {
+	/** Method */
+    public List<Pet> getPets() {
 		
 		List<PetEntity> petsEntity = service.findAll();
 		
@@ -41,7 +51,8 @@ public class PetService {
 	}
 	
 	// get one
-	public Pet getPetById(int id) {
+	/** Method */
+    public Pet getPetById(int id) {
 		PetEntity tgtPet = service.findById(id);
 		return new Pet(
 			tgtPet.getId(), 
@@ -58,7 +69,8 @@ public class PetService {
 	}
 
 	// create
-	public void addPet(Pet pet) {
+	/** Method */
+    public void addPet(Pet pet) {
 		PetEntity newPet = new PetEntity(
 			null,
 			pet.getName(),
@@ -74,7 +86,8 @@ public class PetService {
     }
 	
 	// update
-	public void updatePet(Pet pet) {
+	/** Method */
+    public void updatePet(Pet pet) {
 		PetEntity updatedPet = new PetEntity(
 			pet.getId(),
 			pet.getName(),
@@ -90,6 +103,7 @@ public class PetService {
 	}
 	
 	// delete
+    /** Method */
     public void deletePet(Pet pet) {
 		PetEntity deleteTgt = new PetEntity(
 			pet.getId(),

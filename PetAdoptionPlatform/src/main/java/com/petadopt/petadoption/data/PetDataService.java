@@ -1,3 +1,7 @@
+/**
+ * Data service class for accessing and managing pet data in the database.
+ * Works with JDBC or Spring Data repositories to fetch or persist pet information.
+ */
 package com.petadopt.petadoption.data;
 
 import java.util.ArrayList;
@@ -12,18 +16,25 @@ import com.petadopt.petadoption.data.repository.PetRepository;
 
 @Service
 //Main class or interface for petdataservice operations
-public class PetDataService implements DataAccessInterface<PetEntity> {
+/**
+ * Data access service for pets.
+ */
+/** Method */
+    public class PetDataService implements DataAccessInterface<PetEntity> {
 
 	
 	@Autowired
-	private PetRepository petRepo;
+	/** Field */
+    private PetRepository petRepo;
 	
-	public PetDataService(PetRepository petRepo) {
+	/** Method */
+    public PetDataService(PetRepository petRepo) {
 		
 		this.petRepo = petRepo;
 	}
 	   // Method to handle findall functionality
-	public List<PetEntity> findAll() {
+	/** Method */
+    public List<PetEntity> findAll() {
 		
 		List<PetEntity> pets = new ArrayList<PetEntity>();
 		
@@ -40,25 +51,29 @@ public class PetDataService implements DataAccessInterface<PetEntity> {
 		return pets;
 	}
 
-	public PetEntity findById(int id) {
+	/** Method */
+    public PetEntity findById(int id) {
 		Optional<PetEntity> pet = petRepo.findById(id);
 		return pet.isPresent() ? pet.get() : null; 
 	}
 
 	@Override
-	public boolean create(PetEntity newPet) {
+	/** Method */
+    public boolean create(PetEntity newPet) {
 		PetEntity resultPet = petRepo.save(newPet);
 		return resultPet != null;
 	}
 
 	@Override
-	public boolean update(PetEntity pet) {
+	/** Method */
+    public boolean update(PetEntity pet) {
 		PetEntity resultPet = petRepo.save(pet);
 		return resultPet != null;
 	}
 
 	@Override
-	public boolean delete(PetEntity pet) {
+	/** Method */
+    public boolean delete(PetEntity pet) {
 		petRepo.delete(pet);
 		return !petRepo.existsById(pet.getId());
 	}

@@ -1,3 +1,7 @@
+/**
+ * Represents a pet available for adoption.
+ * Contains attributes like name, breed, age, and availability.
+ */
 package com.petadopt.petadoption.model;
 
 import javax.validation.constraints.NotNull;
@@ -11,29 +15,42 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 /*@Entity*/
-public class Pet {
+/**
+ * Data model for pet information.
+ */
+/** Method */
+    public class Pet {
 
-	private int id;
+	/** Field */
+    private int id;
 	
 	@NotNull(message="Name is a required field")
     @Size(min=3, max=20, message="Name must be between 3 and 20 characters")
+    /** Field */
     private String name;
+    /** Field */
     private int age;
+    /** Field */
     private String breed;
+    /** Field */
     private String size;
     
     @NotNull(message="Sex is a required field")
     @Size(min=1, max=10, message="Sex must be between 1 and 10 characters")
+    /** Field */
     private String sex;
 
 /*    @Column(length = 1000)*/
+    /** Field */
     private String description;
     
     @NotNull(message="Adoption Status is a required field")
     @Size(min=1, message="Adoption Status must have at least 1 character")
+    /** Field */
     private String adoptionStatus; // Available, Pending, Adopted
     
-	public Pet() {
+	/** Method */
+    public Pet() {
 		this.id = 0;
 		this.name = "";
 		this.age = 0;
@@ -44,7 +61,8 @@ public class Pet {
 		this.adoptionStatus = "";
 	}
     
-	public Pet(int id, String name, int age, String breed, String size, String sex, String description,
+	/** Method */
+    public Pet(int id, String name, int age, String breed, String size, String sex, String description,
 			String adoptionStatus) {
 		this.id = id;
 		this.name = name;
@@ -56,73 +74,90 @@ public class Pet {
 		this.adoptionStatus = adoptionStatus;
 	}
 	 // Method to handle getid functionality
-	public int getId() {
+	/** Method */
+    public int getId() {
 		return id;
 	}
     // Method to handle setid functionality
 
-	public void setId(int id) {
+	/** Method */
+    public void setId(int id) {
 		this.id = id;
 	}
 	// ... [other getters/setters omitted for brevity]
-	public String getName() {
+	/** Method */
+    public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	/** Method */
+    public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getAge() {
+	/** Method */
+    public int getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	/** Method */
+    public void setAge(int age) {
 		this.age = age;
 	}
 
-	public String getBreed() {
+	/** Method */
+    public String getBreed() {
 		return breed;
 	}
 
-	public void setBreed(String breed) {
+	/** Method */
+    public void setBreed(String breed) {
 		this.breed = breed;
 	}
 
-	public String getSize() {
+	/** Method */
+    public String getSize() {
 		return size;
 	}
 
-	public void setSize(String size) {
+	/** Method */
+    public void setSize(String size) {
 		this.size = size;
 	}
 
-	public String getSex() {
+	/** Method */
+    public String getSex() {
 		return sex;
 	}
 
-	public void setSex(String gender) {
+	/** Method */
+    public void setSex(String gender) {
 		this.sex = gender;
 	}
 
-	public String getDescription() {
+	/** Method */
+    public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	/** Method */
+    public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public String getAdoptionStatus() {
+	/** Method */
+    public String getAdoptionStatus() {
 		return adoptionStatus;
 	}
 
-	public void setAdoptionStatus(String adoptionStatus) {
+	/** Method */
+    public void setAdoptionStatus(String adoptionStatus) {
 		this.adoptionStatus = adoptionStatus;
 	}
     
     @Override
-	public String toString() {
+	/** Method */
+    public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", age=" + age + ", breed=" + breed + ", size=" + size + ", sex="
 				+ sex + ", description=" + description + ", adoptionStatus=" + adoptionStatus + "]";
 	}

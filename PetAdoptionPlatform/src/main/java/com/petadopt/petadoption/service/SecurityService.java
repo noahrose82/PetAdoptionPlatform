@@ -1,11 +1,20 @@
+/**
+ * Service class responsible for user authentication and security logic.
+ * Integrates with Spring Security to manage user login state.
+ */
 package com.petadopt.petadoption.service;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class SecurityService {
+/**
+ * Handles login and authentication checks.
+ */
+/** Method */
+    public class SecurityService {
 	
-	public boolean authenticate(String username, String password) {
+	/** Method */
+    public boolean authenticate(String username, String password) {
 		
 		String correctUN = "username";
 		String correctPW = "password";

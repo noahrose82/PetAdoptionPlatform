@@ -1,3 +1,7 @@
+/**
+ * Entity class representing a User in the pet adoption platform.
+ * Contains user details such as ID, username, password, and roles.
+ */
 package com.petadopt.petadoption.data.entity;
 
 import org.springframework.data.annotation.Id;
@@ -5,33 +9,46 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("users")
-public class UserEntity {
+/**
+ * Represents a user in the system.
+ */
+/** Method */
+    public class UserEntity {
 	
 	@Id
-	private Integer id;
+	/** Field */
+    private Integer id;
 	
 	@Column("first_name")
-	private String firstName;
+	/** Field */
+    private String firstName;
 	
 	@Column("last_name")
-	private String lastName;
+	/** Field */
+    private String lastName;
 	
 	@Column("username")
-	private String username;
+	/** Field */
+    private String username;
 	
 	@Column("password")
-	private String password;
+	/** Field */
+    private String password;
 	
 	@Column("email")
-	private String email;
+	/** Field */
+    private String email;
 	
 	@Column("phone_number")
-	private String phoneNumber;
+	/** Field */
+    private String phoneNumber;
 	
 	@Column("role")
-	private String role;
+	/** Field */
+    private String role;
 	
-	public UserEntity(Integer id, String firstName, String lastName, String username, String password, String email,
+	/** Method */
+    public UserEntity(Integer id, String firstName, String lastName, String username, String password, String email,
 			String phoneNumber, String role) {
 		this.id = id;
 		this.firstName = firstName;
@@ -43,67 +60,83 @@ public class UserEntity {
 		this.role = role;
 	}
 
-	public Integer getId() {
+	/** Method */
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	/** Method */
+    public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getFirstName() {
+	/** Method */
+    public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	/** Method */
+    public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public String getLastName() {
+	/** Method */
+    public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	/** Method */
+    public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public String getUsername() {
+	/** Method */
+    public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(String username) {
+	/** Method */
+    public void setUsername(String username) {
 		this.username = username;
 	}
 
-	public String getPassword() {
+	/** Method */
+    public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	/** Method */
+    public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getEmail() {
+	/** Method */
+    public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	/** Method */
+    public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getPhoneNumber() {
+	/** Method */
+    public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	/** Method */
+    public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getRole() {
+	/** Method */
+    public String getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	/** Method */
+    public void setRole(String role) {
 		this.role = role;
 	}
 }

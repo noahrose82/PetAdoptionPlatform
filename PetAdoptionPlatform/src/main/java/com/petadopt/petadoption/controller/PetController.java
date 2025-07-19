@@ -1,3 +1,7 @@
+/**
+ * Controller class for handling web requests related to pets.
+ * Exposes endpoints for pet management in the web interface.
+ */
 package com.petadopt.petadoption.controller;
 
 import com.petadopt.petadoption.model.Pet;
@@ -26,19 +30,27 @@ import javax.validation.Valid;
 @Controller
 //Main class for handling pet-related operations
 @RequestMapping("/pets")
-public class PetController {
+/**
+ * Web controller for managing pet records.
+ */
+/** Method */
+    public class PetController {
 	
     @Autowired
+    /** Field */
     private PetService petService;
 
 	String hostName = "localhost";
     String route;
     int port = 8080;
     
-	private String credentials = "tests:tests";
-	private String base64Creds = Base64.getEncoder().encodeToString(credentials.getBytes());
+	/** Field */
+    private String credentials = "test123:test123";
+	/** Field */
+    private String base64Creds = Base64.getEncoder().encodeToString(credentials.getBytes());
 
     @GetMapping("/display")
+    /** Method */
     public String displayLoggedIn(Model model) {
         
         route = "/api/pets";
@@ -65,7 +77,8 @@ public class PetController {
     }
     
    	@GetMapping("/display/{id}")
-   	public String displaySelected(@PathVariable Integer id, Model model) {
+   	/** Method */
+    public String displaySelected(@PathVariable Integer id, Model model) {
            
            route = "/api/pets/" + id;
            
@@ -93,12 +106,14 @@ public class PetController {
 	
     // Method to display all pets
 	@GetMapping("/new")
-	public String displayNewPetForm(Model model) {
+	/** Method */
+    public String displayNewPetForm(Model model) {
         model.addAttribute("pet", new Pet(0, null, 0, null, null, null, null, null));
         return "pet/create";
     }
     
     @PostMapping("/doNew")
+    /** Method */
     public String addPet(@Valid Pet pet, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
@@ -111,12 +126,14 @@ public class PetController {
     }
     
     @GetMapping("/update/{id}")
+    /** Method */
     public String displayUpdatePetForm(@PathVariable Integer id, Model model) {
         model.addAttribute("pet", petService.getPetById(id));
         return "pet/update";
     }
     
     @PostMapping("update/doUpdate")
+    /** Method */
     public String updatePet(@Valid Pet pet, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
@@ -128,6 +145,7 @@ public class PetController {
     }
     
     @PostMapping("delete/{id}")
+    /** Method */
     public String deletePet(@PathVariable Integer id, Model model) {
         petService.deletePet(petService.getPetById(id));
         return "redirect:/pets/display";

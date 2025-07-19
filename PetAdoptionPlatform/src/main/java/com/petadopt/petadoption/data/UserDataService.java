@@ -1,3 +1,7 @@
+/**
+ * Data service class for accessing and managing user records in the database.
+ * Responsible for executing user-related CRUD operations.
+ */
 package com.petadopt.petadoption.data;
 
 import java.util.ArrayList;
@@ -12,17 +16,24 @@ import com.petadopt.petadoption.data.repository.UserRepository;
 @Service
 //Main class or interface for userdata service operations
 
-public class UserDataService {
+/**
+ * Service for direct user data access and manipulation.
+ */
+/** Method */
+    public class UserDataService {
 
 	@Autowired
-	private UserRepository userRepo;
+	/** Field */
+    private UserRepository userRepo;
 		
-	public UserDataService(UserRepository userRepo) {
+	/** Method */
+    public UserDataService(UserRepository userRepo) {
 			
 		this.userRepo = userRepo;
 	}
 	
-	public int getUserId() {
+	/** Method */
+    public int getUserId() {
 		
 		List<UserEntity> users = new ArrayList<UserEntity>();
 		
@@ -40,12 +51,14 @@ public class UserDataService {
 	}
 	
     // Method to handle findall functionality
-	public UserEntity findByUsername(String username) {
+	/** Method */
+    public UserEntity findByUsername(String username) {
 		
 		return userRepo.findByUsername(username);
 	}
 	
-	public UserEntity createUser(UserEntity newUser) {
+	/** Method */
+    public UserEntity createUser(UserEntity newUser) {
 
 		return userRepo.save(newUser);
 	}

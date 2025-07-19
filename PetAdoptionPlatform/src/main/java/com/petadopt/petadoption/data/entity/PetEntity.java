@@ -1,3 +1,7 @@
+/**
+ * Entity class representing the Pet table in the database.
+ * Used for ORM mapping and database persistence.
+ */
 package com.petadopt.petadoption.data.entity;
 
 import org.springframework.data.annotation.Id;
@@ -11,33 +15,46 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("pets")
-public class PetEntity {
+/**
+ * JPA Entity for pet data.
+ */
+/** Method */
+    public class PetEntity {
 
 	@Id
-	private Integer id;
+	/** Field */
+    private Integer id;
 	
 	@Column("name")
-	private String name;
+	/** Field */
+    private String name;
 	
 	@Column("age")
+    /** Field */
     private int age;
     
     @Column("breed")
+    /** Field */
     private String breed;
     
     @Column("size")
+    /** Field */
     private String size;
     
     @Column("sex")
-	private String sex;
+	/** Field */
+    private String sex;
 	
 	@Column("description")
-	private String description;
+	/** Field */
+    private String description;
 	
 	@Column("adoption_status")
+    /** Field */
     private String adoptionStatus; // Available, Pending, Adopted
 
-	public PetEntity(Integer id, String name, int age, String breed, String size, String sex, String description,
+	/** Method */
+    public PetEntity(Integer id, String name, int age, String breed, String size, String sex, String description,
 			String adoptionStatus) {
 		this.id = id;
 		this.name = name;
@@ -49,72 +66,89 @@ public class PetEntity {
 		this.adoptionStatus = adoptionStatus;
 	}
 
-	public Integer getId() {
+	/** Method */
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	/** Method */
+    public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getName() {
+	/** Method */
+    public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	/** Method */
+    public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getAge() {
+	/** Method */
+    public int getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	/** Method */
+    public void setAge(int age) {
 		this.age = age;
 	}
 
-	public String getBreed() {
+	/** Method */
+    public String getBreed() {
 		return breed;
 	}
 
-	public void setBreed(String breed) {
+	/** Method */
+    public void setBreed(String breed) {
 		this.breed = breed;
 	}
 
-	public String getSize() {
+	/** Method */
+    public String getSize() {
 		return size;
 	}
 
-	public void setSize(String size) {
+	/** Method */
+    public void setSize(String size) {
 		this.size = size;
 	}
 
-	public String getSex() {
+	/** Method */
+    public String getSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	/** Method */
+    public void setSex(String sex) {
 		this.sex = sex;
 	}
 
-	public String getDescription() {
+	/** Method */
+    public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	/** Method */
+    public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public String getAdoptionStatus() {
+	/** Method */
+    public String getAdoptionStatus() {
 		return adoptionStatus;
 	}
 
-	public void setAdoptionStatus(String adoptionStatus) {
+	/** Method */
+    public void setAdoptionStatus(String adoptionStatus) {
 		this.adoptionStatus = adoptionStatus;
 	}
 		
 	@Override
-	public String toString() {
+	/** Method */
+    public String toString() {
 		return "PetEntity [id=" + id + ", name=" + name + ", age=" + age + ", breed=" + breed + ", size=" + size
 				+ ", sex=" + sex + ", description=" + description + ", adoptionStatus=" + adoptionStatus + "]";
 	}

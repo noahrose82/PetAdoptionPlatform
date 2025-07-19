@@ -1,3 +1,7 @@
+/**
+ * Service class handling the business logic for user-related operations.
+ * Acts as an intermediary between the data access layer and controllers.
+ */
 package com.petadopt.petadoption.service;
 
 import java.util.ArrayList;
@@ -17,13 +21,18 @@ import com.petadopt.petadoption.data.entity.UserEntity;
 
 
 @Service
-public class UsersBusinessService implements UserDetailsService {
+/**
+ * Business service for handling user operations.
+ */
+/** Method */
+    public class UsersBusinessService implements UserDetailsService {
 
 	@Autowired
 	UserDataService service;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	/** Method */
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		UserEntity user = service.findByUsername(username);
 		if (user != null) {

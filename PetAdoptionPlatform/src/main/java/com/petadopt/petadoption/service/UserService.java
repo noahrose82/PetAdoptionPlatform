@@ -1,3 +1,7 @@
+/**
+ * Service class responsible for handling user-related logic,
+ * such as creation, retrieval, and authentication.
+ */
 package com.petadopt.petadoption.service;
 
 import com.petadopt.petadoption.data.UserDataService;
@@ -11,13 +15,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 @Service
-public class UserService {
+/**
+ * Provides service methods for user operations.
+ */
+/** Method */
+    public class UserService {
 	
 	@Autowired
-	private UserDataService service;
+	/** Field */
+    private UserDataService service;
     
 	// Method to handle register functionality
-	public UserEntity register(User user) {
+	/** Method */
+    public UserEntity register(User user) {
 		
 		String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());  
 		
@@ -36,7 +46,8 @@ public class UserService {
 	}
 	
     // Method to handle login functionality
-	public boolean login(User user) {
+	/** Method */
+    public boolean login(User user) {
 		
 		UserEntity userCreds = service.findByUsername(user.getUsername());
 		

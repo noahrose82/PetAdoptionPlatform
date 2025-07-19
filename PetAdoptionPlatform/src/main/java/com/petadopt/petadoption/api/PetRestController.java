@@ -1,3 +1,7 @@
+/**
+ * REST controller for handling pet-related API requests.
+ * Provides endpoints for pet retrieval, creation, and deletion.
+ */
 package com.petadopt.petadoption.api;
 
 import java.util.List;
@@ -23,10 +27,15 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/api")
 @Tag(name = "Pets", description = "API for managing pets in the adoption system")
-public class PetRestController {
+/**
+ * Exposes RESTful endpoints for pet management.
+ */
+/** Method */
+    public class PetRestController {
 	
 	@Autowired
-	private PetService service;
+	/** Field */
+    private PetService service;
 	
 	@Operation(summary = "Get all pets", description = "Returns a list of all pets")
     @ApiResponses(value = {
@@ -35,7 +44,8 @@ public class PetRestController {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
 	@GetMapping("/pets")
-	public ResponseEntity<?> getPets() {
+	/** Method */
+    public ResponseEntity<?> getPets() {
 		
 		try {
 			List<Pet> pets = service.getPets();
@@ -59,7 +69,8 @@ public class PetRestController {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
 	@GetMapping("/pets/{id}")
-	public ResponseEntity<?> getOnePet(@PathVariable int id) {
+	/** Method */
+    public ResponseEntity<?> getOnePet(@PathVariable int id) {
 		
 		try {
 			Pet pet = service.getPetById(id);
